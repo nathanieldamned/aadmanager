@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simple Azure ActiveDirectory users manager
+
+## Config
+
+In config.ts file, set up a proper appId
 
 ## Available Scripts
 
