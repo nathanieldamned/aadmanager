@@ -1,0 +1,28 @@
+.section {
+  background: #fff;
+  padding: 28px;
+  margin-bottom: 28px;
+  border-radius: 2px;
+  background-clip: padding-box;
+  box-shadow: 0 1.6px 3.6px 0 rgba(0,0,0,.132), 0 0.3px 0.9px 0 rgba(0,0,0,.108);
+  position: relative;
+
+  .sectionHeader {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    .text {
+      color: #323130;
+      font-weight: 600;
+      line-height: 1;
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 24px;
+      outline: 0;
+    }
+  }
+}

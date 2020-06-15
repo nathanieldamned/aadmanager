@@ -1,0 +1,8 @@
+.users-buttons {
+  align-content: flex-start;
+  flex-direction: row;
+  margin-top: 1rem;
+  & > * {
+    margin-right: 1rem;
+  }
+}

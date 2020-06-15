@@ -1,0 +1,9 @@
+.user-form {
+  & > * {
+    margin-bottom: 1rem;
+  }
+  .buttons {    
+    align-content: flex-start;
+    flex-direction: row;
+  }
+}

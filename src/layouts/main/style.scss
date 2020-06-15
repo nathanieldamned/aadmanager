@@ -1,0 +1,10 @@
+.main-header {
+  height: 2rem;
+}
+.main-container {
+  display: flex;
+  .main-section {
+    flex: 1 1 auto;
+    margin: 0 2rem;
+  }
+}

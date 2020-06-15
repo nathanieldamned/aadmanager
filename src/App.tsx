@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { PrimaryButton } from '@fluentui/react';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+import withAuthProvider, { AuthComponentProps } from './AuthProvider';
+import MainLayout from './layouts/main';
+import { routeMap } from './routeMap';
+import Users from './views/Users';
+import User from './views/User';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+initializeIcons();
+
+class App extends React.PureComponent<AuthComponentProps> {
+  handleLoginClick = () => {
+    const { login } = this.props;
+    login();
+  }
+  render() {
+    const { isAuthenticated, error, logout } = this.props;
+    return (
+      <Router>
+        {!isAuthenticated && (
+          <>
+            <PrimaryButton onClick={this.handleLoginClick}>Login</PrimaryButton>
+            <p>{error && JSON.stringify(error)}</p>
+          </>
+        )}
+        {isAuthenticated && (
+          <MainLayout>
+            <Route path={routeMap.ad.users} component={Users} />
+            <Route path={`${routeMap.ad.user}/:id?`} exact render={(props) => <User {...props.match.params} />} />
+            <Route path={routeMap.app.logout} render={() => logout() } />
+          </MainLayout>
+        )}
+      </Router>
+    );
+  }
 }
 
-export default App;
+export default withAuthProvider(App);
